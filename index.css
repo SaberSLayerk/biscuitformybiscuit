@@ -1,0 +1,48 @@
+h1{
+    text-shadow: 8px 8px rgb(255, 0, 191);
+    color: rgb(224, 225, 226);
+    text-align: center;
+    letter-spacing: 5px;
+    font-family: 'Lobster', cursive;
+    font-size: 75px;
+
+}
+html, body{
+    
+    background: linear-gradient(180deg,#f78fb3 15%, #FFB7D5 25%, #f5bec4 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    
+
+}
+.pill-menu{
+  justify-self: right;
+}
+.pill-menu ul {
+  margin: 50px;
+  list-style: none;
+  display: inline-flex;
+  gap: 1rem;
+  padding: 10px 20px;
+  background-color: #e7779e; /* cotton candy pink */
+  border-radius: 999px;       /* pill shape */
+  justify-content: right;
+  align-items: center;
+  font-size: 20px;
+}
+
+.pill-menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;        /* pill shape */
+  background-color: #e7779e;   /* darker pink */
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.pill-menu li a:hover {
+  background-color: #ffd1dc;   /* lighter pink on hover */
+  color: #333;
+}
