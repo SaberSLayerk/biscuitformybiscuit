@@ -49,5 +49,7 @@ html, body{
 
 .nicknames{
   padding:50px;
-  background-color: red;
+  background-color: rgb(204, 115, 157);
+  border-radius: 900px;
+  display:flex;
 }
