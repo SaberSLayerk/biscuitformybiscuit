@@ -46,3 +46,8 @@ html, body{
   background-color: #ffd1dc;   /* lighter pink on hover */
   color: #333;
 }
+
+.nicknames{
+  padding:50px;
+  background-color: aliceblue;
+}
