@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 h1{
     text-shadow: 8px 8px rgb(255, 0, 191);
     color: rgb(224, 225, 226);
@@ -9,20 +11,42 @@ h1{
 }
 html, body{
     
-    background: linear-gradient(180deg,#f78fb3 15%, #FFB7D5 25%, #f5bec4 100%);
-    background-repeat: no-repeat;
+    background: linear-gradient(180deg,#f78fb3 25%, #FFB7D5 35%, #f5bec4 100%);
+    background-repeat: repeat-y;
     background-size: cover;
-    height: 100%;
+    min-height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    font-family: "Quicksand", sans-serif;
+    
     
 
 }
+.icon-container {
+  position: relative; /* Or absolute if it should be relative to the viewport */
+  width: 100px; /* Example width */
+  height: 100px; /* Example height */
+  display: flex;
+}
+
+.top-left-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Add other styles like width, height, image source, etc. */
+  width: 15ch;
+  height: 15ch;
+  display: flex;
+}
+
 .pill-menu{
   justify-self: right;
+  display: flex;
 }
 .pill-menu ul {
   margin: 50px;
   list-style: none;
-  display: inline-flex;
+  display: flex;
   gap: 1rem;
   padding: 10px 20px;
   background-color: #e7779e; /* cotton candy pink */
@@ -51,24 +75,62 @@ html, body{
   margin-top:10%;
   margin-left: 20%;
   margin-right: 20%;
-  margin-bottom: 20%;
-  padding: 20px;
+  margin-bottom: 10%;
   background-color: rgb(204, 115, 157);
   border-radius: 999px;
   align-content: center;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   color: rgb(223, 223, 223);
-  font-size: 25px;
+  font-size: 23px;
   
 }
 
-.essays{
-  padding: 1%;
-  border: 2px solid black;
-  justify-content: left;
+
+
+.defs a{
   text-align: center;
-  margin: 5%;
+  justify-content: center;
+  
+  margin: 4%;
+  font-size: 20px;
+  letter-spacing:1ch ;
+  width: 105%;
+  text-decoration: none;
+  color: black;
 }
 
+#essay{
+background-color: #f55d7694;
+height: 100%;
+}
+
+.defs{
+  padding: 0;
+  margin: 0%;
+  
+}
+
+#idea{
+  background-color: #f1489d94;
+  height: 100%;
+  
+}
+#idea img{
+  width: 95%;
+  height: 55%;
+}
+
+#photos{
+
+  background-color: #f04d769a;
+  padding-bottom: 15px;
+ 
+}
+#photos img{
+  padding-top: 10px;
+  width: 80%;
+  height: 100%;
+}

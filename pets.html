@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pink Bunny Tamagotchi</title>
+  <link rel="stylesheet" href="pets.css" />
+         <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+
+        <link rel="stylesheet" href="index.css">
+  </head>
+<body>
+    <div class="icon-container">
+      <img src="/moon.png" alt="Moon shape" class="top-left-icon">
+    </div>
+    <nav class="pill-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Essays</a></li>
+      <li><a href="#">Date Idea</a></li>
+      <li><a href="#">Photos</a></li>
+      <li><a href="pets.html">Pets</a></li>
+    </ul>
+    </nav>
+    <div class="container">
+        <h1>🐰 Pink Bunny</h1>
+        <div class="bunny-container">
+            <div class="bunny">
+                <div class="eye left-eye"></div>
+                <div class="eye right-eye"></div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+
+      <div class="stats">
+        <p>Hunger: <span id="hunger">50</span></p>
+        <p>Happiness: <span id="happiness">50</span></p>
+        <p>Hygiene: <span id="hygiene">50</span></p>
+      </div>
+    </div>
+    <div class="buttons">
+        
+        <button onclick="feed()">🍓 Feed</button>
+        <button onclick="play()">🎾 Play</button>
+        <button onclick="clean()">🧼 Clean</button>
+    </div>
+  </div>
+  <script src="pets.js"></script>
+</body>
+</html>

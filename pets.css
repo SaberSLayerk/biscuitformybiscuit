@@ -1,0 +1,218 @@
+/* style.css */
+body {
+ background: linear-gradient(180deg,#f78fb3 25%, #FFB7D5 35%, #f5bec4 100%);
+    background-repeat: repeat-y;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    font-family: "Quicksand", sans-serif;
+  
+  justify-content: center;
+  align-items: center;
+
+}
+
+.icon-container {
+  position: relative; /* Or absolute if it should be relative to the viewport */
+  width: 100px; /* Example width */
+  height: 100px; /* Example height */
+  display: inline-block;
+}
+
+.top-left-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Add other styles like width, height, image source, etc. */
+  width: 15ch;
+  height: 15ch;
+  display: inline-flex;
+}
+
+.pill-menu{
+  justify-self: right;
+}
+.pill-menu ul {
+  margin: 50px;
+  list-style: none;
+  display: inline-flex;
+  gap: 1rem;
+  padding: 10px 20px;
+  background-color: #e7779e; /* cotton candy pink */
+  border-radius: 999px;       /* pill shape */
+  justify-content: right;
+  align-items: center;
+  font-size: 20px;
+}
+
+.pill-menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;        /* pill shape */
+  background-color: #e7779e;   /* darker pink */
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.pill-menu li a:hover {
+  background-color: #ffd1dc;   /* lighter pink on hover */
+  color: #333;
+}
+
+.container {
+    background: white;
+  border-radius: 20px;
+  padding: 50px;
+  text-align: center;
+  justify-self: center;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+  width: 50%;
+}
+
+h1 {
+  color: #ff69b4;
+}
+
+.bunny-area {
+  margin: 20px 0;
+  padding: 50px;
+  
+}
+
+.bunny {
+    padding-top: 20px;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 10px;
+  background-color: pink;
+  border-radius: 50% 50% 40% 40%;
+  position: relative;
+}
+
+.bunny::before, .bunny::after {
+  content: '';
+  width: 20px;
+  height: 60px;
+  background: pink;
+  position: absolute;
+  top: -40px;
+  border-radius: 50%;
+}
+
+.bunny::before {
+  left: 10px;
+}
+
+.bunny::after {
+  right: 10px;
+}
+
+.stats p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+.buttons{
+    justify-self: center;
+}
+.buttons button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  justify-self: center;
+  text-align: center;
+}
+
+.buttons button:hover {
+  background-color: #ff69b4;
+  color: white;
+}
+ .eye {
+  width: 20px;
+  height: 20px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 35px;
+}
+
+.left-eye {
+  left: 25px;
+}
+
+.right-eye {
+  right: 25px;
+}
+
+.mouth {
+  width: 30px;
+  height: 6px;
+  border: 2px solid black;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* Mood-based bunny colors */
+.bunny.happy {
+  background-color: #ffb6d9;
+}
+
+.bunny.neutral {
+  background-color: #f4a7c3;
+}
+
+.bunny.sad {
+  background-color: #c0b3b3;
+}
+
+/* Default face hidden, mood-specific faces added */
+.bunny .eye,
+.bunny .mouth {
+  display: none;
+}
+
+/* Mood-based faces */
+.bunny.happy .eye,
+.bunny.happy .mouth,
+.bunny.neutral .eye,
+.bunny.neutral .mouth,
+.bunny.sad .eye,
+.bunny.sad .mouth {
+  display: block;
+}
+
+/* Happy mouth (smile) */
+.bunny.happy .mouth {
+  border: 2px solid black;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Neutral mouth (flat) */
+.bunny.neutral .mouth {
+  width: 12px;
+  height: 2px;
+  background: black;
+  border: none;
+  border-radius: 0;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Sad mouth (frown) */
+.bunny.sad .mouth {
+  border: 2px solid black;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  top: 60px;
+}
+
