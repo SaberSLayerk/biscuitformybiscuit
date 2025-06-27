@@ -31,8 +31,11 @@ html, body{
 
 }
 
-#authsection{
+#signsection{
   justify-self: center;
   text-align: center;
   padding-top: 15%;
+}
+#acct, #acct a{
+    color: #f31081;
 }

@@ -20,7 +20,7 @@ body {
   display: inline-block;
 }
 
-.top-left-icon {
+.icon-container img{
   position: absolute;
   top: 0;
   left: 0;
@@ -29,6 +29,7 @@ body {
   height: 15ch;
   display: inline-flex;
 }
+
 
 .pill-menu{
   justify-self: right;
@@ -58,7 +59,7 @@ body {
 
 .pill-menu li a:hover {
   background-color: #ffd1dc;   /* lighter pink on hover */
-  color: #333;
+  color: #d6336c;
 }
 
 .container {

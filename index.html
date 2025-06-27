@@ -1,58 +1,59 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-      <title> Biscuits for my Biscuit</title>
-         <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body >
 
-        <link rel="stylesheet" href="index.css">
-  </head>
-<body>
-    <div class="icon-container" style="flex: 1;">
-      <img src="https://sdmntprnortheu.oaiusercontent.com/files/00000000-19c8-61f4-a162-716b717409ec/raw?se=2025-06-26T01%3A13%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=2ee003c8-1e31-5fc4-b8e1-ee7cf65cae43&skoid=bbd22fc4-f881-4ea4-b2f3-c12033cf6a8b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-25T13%3A13%3A41Z&ske=2025-06-26T13%3A13%3A41Z&sks=b&skv=2024-08-04&sig=G5Xt54sLZTybBWwXXC79wgIHLTzsu/GUctsnw8NqXKY%3D" alt="Icon" class="top-left-icon">
-    </div>
-    <nav class="pill-menu" style="flex: 1;">
-    <ul style="flex: 1;">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#">Essays</a></li>
-      <li><a href="#">Date Idea</a></li>
-      <li><a href="#">Photos</a></li>
-      <li><a href="pets.html">Pets</a></li>
-    </ul>
-    </nav>
+  <div id="authSection">
+    <h1>Welcome to Your Personal Libary</h1>
+      <h2>Log In to Your Account</h2>
 
-    <h1>Biscuits for My Biscuit </h1>
-    
-    
-    <div class="nicknames">
-      <p style="flex: 1;">For all you are, and you are my love, my baby, my heart, my coco, my everthing, my happiness, <br>
-         my cutey, my good girl, my smart girl, my perfect girl, the mother of my kids, my wife, my girlfriend,<br>
-         my darling, mi corazon, mi luna, mi amor, mi vida, mi alma, mi todo, my princess and MY BISCUIT</p>
-    </div>
+  <input type="email" id="loginEmail" placeholder="Email" /><br><br>
+  <input type="password" id="loginPassword" placeholder="Password" /><br><br>
+  <button onclick="logIn()">Log In</button>
 
-    <div class= "defs" style="display: flex;">
-      <a href="#" id="linktest" >
-        <div id="essay" style="flex: 1;">
-        <img src="https://prowler.dths.org/wp-content/uploads/2019/02/REVISED-HEART-SHAPED-100-WORD-LOVE-STORY.png" alt="REVISED-HEART-SHAPED-100-WORD-LOVE-STORY" style="padding-top: 10ch;">
-        <h2>Essays: <br> To read our love</h2>
-        </div>
-      </a>
-      <a href="#" id="linktest" >
-        <div style="flex: 1;" id="idea" >
-          <img src="https://craftyinsights.com/wp-content/uploads/2024/03/Heartbeat-Line-Art-jpg.webp" alt="Heart within line of pulse" style="padding-top: 10ch;">
-          <h2>Date Ideas: <br> To grow our love</h2>
+  <p id="loginStatus" style="color:green;"></p>
+  <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
 
-        </div>
-      </a>
-      <a href="#" id="linktest" >
-        <div style="flex: 1;" id="photos">
-          <img src="https://evbg4enimsr.exactdn.com/wp-content/uploads/2025/01/Dibujos-de-amor-planeta-amor-667x1000.jpg?strip=all&lossy=1&ssl=1" alt="A heart as a planet">
-          <h2>Photos: <br> To see our love</h2>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
 
-        </div>
-      </a>
-  </div>
+  <!-- Firebase Config -->
+  <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
+        authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
+        projectId: "biscuit-for-my-biscuit",
+        storageBucket: "biscuit-for-my-biscuit.firebasestorage.app",
+        messagingSenderId: "1059060992203",
+        appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
+        measurementId: "G-NMFLB5HE3K"
+    };
 
-    
-  </body>
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+
+  <!-- Log In Logic -->
+  <script>
+    function logIn() {
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          document.getElementById("loginStatus").textContent = "Login successful!";
+          window.location.href = "homePage.html"; // redirect after login
+        })
+        .catch(error => {
+          document.getElementById("loginStatus").style.color = "red";
+          document.getElementById("loginStatus").textContent = error.message;
+        });
+    }
+  </script>
+</body>
 </html>
