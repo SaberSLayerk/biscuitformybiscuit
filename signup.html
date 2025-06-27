@@ -18,25 +18,27 @@
   <p id="acct">Already have an account? <a href="index.html">Log In</a></p>
 </div>
   <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+   <!-- ✅ Firebase SDKs for browser use -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
   <!-- Firebase Config -->
-  <script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
-        authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
-        projectId: "biscuit-for-my-biscuit",
-        storageBucket: "biscuit-for-my-biscuit.firebasestorage.app",
-        messagingSenderId: "1059060992203",
-        appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
-        measurementId: "G-NMFLB5HE3K"
-    };
+ <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
+    authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
+    projectId: "biscuit-for-my-biscuit",
+    storageBucket: "biscuit-for-my-biscuit.appspot.com",
+    messagingSenderId: "1059060992203",
+    appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
+    measurementId: "G-NMFLB5HE3K"
+  };
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-  </script>
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore(); // only if you're using Firestore
+</script>
 
   <!-- Sign Up Logic -->
   <script>

@@ -19,8 +19,9 @@
   <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
 
   <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+ <!-- Firebase v10 browser-compatible scripts -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
   <!-- Firebase Config -->
   <script>
@@ -28,7 +29,7 @@
         apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
         authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
         projectId: "biscuit-for-my-biscuit",
-        storageBucket: "biscuit-for-my-biscuit.firebasestorage.app",
+        storageBucket: "biscuit-for-my-biscuit.appspot.com", // ✅ fixed
         messagingSenderId: "1059060992203",
         appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
         measurementId: "G-NMFLB5HE3K"
@@ -39,6 +40,9 @@
   </script>
 
   <!-- Log In Logic -->
+   <script>
+  console.log("Firebase version:", firebase.SDK_VERSION); // debug check
+</script>
   <script>
     function logIn() {
       const email = document.getElementById("loginEmail").value;

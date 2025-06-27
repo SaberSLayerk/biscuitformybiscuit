@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Date Idea </title>
+    <title>Essays </title>
 </head>
 <body> <title> Biscuits for my Biscuit</title>
          <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
@@ -34,24 +34,25 @@
     <h3>Your Saved Essays:</h3>
     <div id="essayList"></div>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
-    <script>
-      const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT_ID.appspot.com",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-      };
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
+    authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
+    projectId: "biscuit-for-my-biscuit",
+    storageBucket: "biscuit-for-my-biscuit.appspot.com",
+    messagingSenderId: "1059060992203",
+    appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
+    measurementId: "G-NMFLB5HE3K"
+  };
 
-      firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-      const db = firebase.firestore();
+  // ✅ Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
 
       let currentUser = null;
 
@@ -70,12 +71,12 @@
         const body = document.getElementById("essayBody").value.trim();
         if (!title || !body || !currentUser) return;
 
-        db.collection("essays").add({
-          uid: currentUser.uid,
-          title: title,
-          body: body,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => {
+       db.collection("essays").add({
+         uid: firebase.auth().currentUser.uid, // ✅ must be set
+         title: title,
+         body: body,
+         timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          }).then(() => {
           document.getElementById('status').textContent = 'Essay saved!';
           loadEssays();
         });
