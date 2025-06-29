@@ -31,40 +31,50 @@ const firebaseConfig = {
     }
 
     function uploadPhoto() {
-      const file = document.getElementById("photoInput").files[0];
-      const tagString = document.getElementById("tagInput").value.trim();
-      const tags = tagString ? tagString.split(',').map(tag => tag.trim().toLowerCase()) : [];
-      const status = document.getElementById("uploadStatus");
+  const file = document.getElementById("photoInput").files[0];
+  const tagString = document.getElementById("tagInput").value.trim();
+  const tags = tagString ? tagString.split(',').map(tag => tag.trim().toLowerCase()) : [];
+  const status = document.getElementById("uploadStatus");
 
-      if (!file) {
-        status.textContent = "Please select a photo.";
-        return;
-      }
+  if (!file) {
+    status.textContent = "Please select a photo.";
+    return;
+  }
 
-      const storageRef = storage.ref(`photos/${currentUser.uid}/${file.name}`);
-      storageRef.put(file)
-        .then(snapshot => snapshot.ref.getDownloadURL())
-        .then(url => {
-          return db.collection("photos").add({
-            uid: currentUser.uid,
-            url: url,
-            tags: tags,
-            filename: file.name,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-          });
-        })
-        .then(() => {
-          status.style.color = "green";
-          status.textContent = "Photo uploaded!";
-          document.getElementById("photoInput").value = "";
-          document.getElementById("tagInput").value = "";
-          loadPhotos();
-        })
-        .catch(error => {
-          status.style.color = "red";
-          status.textContent = "Error: " + error.message;
-        });
-    }
+  const user = firebase.auth().currentUser;
+
+  if (!user) {
+    status.style.color = "red";
+    status.textContent = "You must be logged in to upload photos.";
+    return;
+  }
+
+  const storageRef = storage.ref(`photos/${user.uid}/${file.name}`);
+
+  storageRef.put(file)
+    .then(snapshot => snapshot.ref.getDownloadURL())
+    .then(url => {
+      return db.collection("photos").add({
+        uid: user.uid,
+        url: url,
+        tags: tags,
+        filename: file.name,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    })
+    .then(() => {
+      status.style.color = "green";
+      status.textContent = "Photo uploaded!";
+      document.getElementById("photoInput").value = "";
+      document.getElementById("tagInput").value = "";
+      loadPhotos();
+    })
+    .catch(error => {
+      status.style.color = "red";
+      status.textContent = "Error: " + error.message;
+    });
+}
+
 
     function loadPhotos() {
       const gallery = document.getElementById("gallery");
