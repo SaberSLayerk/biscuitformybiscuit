@@ -48,8 +48,9 @@ const firebaseConfig = {
     status.textContent = "You must be logged in to upload photos.";
     return;
   }
+  const safeFileName = encodeURIComponent(file.name);
+const storageRef = storage.ref(`photos/${user.uid}/${safeFileName}`);
 
-  const storageRef = storage.ref(`photos/${user.uid}/${file.name}`);
 
   storageRef.put(file)
     .then(snapshot => snapshot.ref.getDownloadURL())
