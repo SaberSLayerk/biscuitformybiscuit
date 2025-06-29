@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+html, body{
+    
+    background: linear-gradient(180deg,#f78fb3 25%, #FFB7D5 35%, #f5bec4 100%);
+    background-repeat: repeat-y;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    font-family: "Quicksand", sans-serif;
+    
+    
+
+}
+.icon-container {
+  position: relative; /* Or absolute if it should be relative to the viewport */
+  width: 100px; /* Example width */
+  height: 100px; /* Example height */
+  display: flex;
+}
+
+.top-left-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Add other styles like width, height, image source, etc. */
+  width: 15ch;
+  height: 15ch;
+  display: flex;
+}
+
+.pill-menu{
+  justify-self: right;
+  display: flex;
+}
+.pill-menu ul {
+  margin: 50px;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 10px 20px;
+  background-color: #e7779e; /* cotton candy pink */
+  border-radius: 999px;       /* pill shape */
+  justify-content: right;
+  align-items: center;
+  font-size: 20px;
+}
+
+.pill-menu li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;        /* pill shape */
+  background-color: #e7779e;   /* darker pink */
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.pill-menu li a:hover {
+  background-color: #ffd1dc;   /* lighter pink on hover */
+  color: #d6336c;
+}
+
+   input, button {
+      margin: 5px 0;
+    }
+    .photo {
+      margin-bottom: 20px;
+    }
+    .photo img {
+      max-width: 200px;
+      display: block;
+    }

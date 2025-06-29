@@ -70,7 +70,7 @@ html, body{
     letter-spacing: 5px;
     font-family: 'Lobster', cursive;
     font-size: 50px;
-    padding-bottom: 15px;
+    padding-bottom: 35px;
 }
 h1 {
     color: #d6336c;
@@ -114,6 +114,7 @@ button:hover {
 
 #essayList {
     margin-top: 30px;
+    color: #d6336c;
 }
 
 .essay-title {
@@ -135,4 +136,31 @@ button:hover {
 
 .hidden {
     display: none;
+}
+h2{
+    text-align: center;
+    justify-self: center;
+    color:#d6336c;
+    font-size: 30px;
+}
+
+#essayTitle{
+    width:95%;
+   display: flex;
+   margin-left: 5ch;
+}
+
+#essayBody{
+    width: 95%;
+   margin-left: 5ch;
+    display: flex;
+    margin-top: 0%;
+
+}
+#essaySection{
+    margin-left: 1ch;
+}
+
+h3{
+    color: #d6336c;
 }

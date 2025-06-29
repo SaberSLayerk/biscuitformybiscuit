@@ -11,26 +11,29 @@
   </head>
 <body>
     <div class="icon-container" style="flex: 1;">
-      <img src="C:\Users\julio lopez\Documents\GitHub\biscuitformybiscuit.github.io\moon.png" alt="Moon Pink shape" class="top-left-icon">
+      <img src="Images/moon.png" alt="Moon Pink shape" class="top-left-icon">
     </div>
     <nav class="pill-menu" style="flex: 1;">
     <ul style="flex: 1;">
       <li><a href="homePage.html">Home</a></li>
       <li><a href="essays.html">Essays</a></li>
       <li><a href="#">Date Idea</a></li>
-      <li><a href="#">Photos</a></li>
+      <li><a href="Photos/photoGallery.html">Photos</a></li>
       <li><a href="pets.html">Pets</a></li>
     </ul>
     </nav>
     <h1 id="note">Not Great at Words, but for You I'd Write You a Library</h1>
     
-    <h2>Write Your Essay</h2>
-    <input type="text" id="essayTitle" placeholder="Essay Title" /><br><br>
-    <textarea id="essayBody" placeholder="Your essay here..." rows="8" cols="50"></textarea><br><br>
-    <button onclick="saveEssayToFirestore()">Save Essay</button>
-    <button onclick="logout()">Logout</button>
-    <div id="status"></div>
-    <hr>
+    <div id="essaySection">
+      <input type="text" id="essayTitle" placeholder="Essay Title" /><br><br>
+      <textarea id="essayBody" placeholder="Your essay here..." rows="8" cols="50"></textarea><br><br>
+    <div id="essaySection">
+      <button onclick="saveEssayToFirestore()">Save Essay</button>
+      <button onclick="logout()">Logout</button>
+      <div id="status"></div>
+      <hr>
+    </div>
+
     <h3>Your Saved Essays:</h3>
     <div id="essayList"></div>
 
