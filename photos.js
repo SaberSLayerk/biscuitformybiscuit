@@ -22,15 +22,21 @@
         currentUser = user;
         loadPhotos();
       } else {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
       }
     });
 
     function logout() {
-      auth.signOut().then(() => window.location.href = "login.html");
+      auth.signOut().then(() => window.location.href = "index.html");
     }
 
     function uploadPhoto() {
+        if (!currentUser) {
+  status.style.color = "red";
+  status.textContent = "You must be logged in to upload photos.";
+  return;
+}
+
       const file = document.getElementById("photoInput").files[0];
       const tagInput = document.getElementById("tagInput").value.trim();
       const tags = tagInput ? tagInput.split(',').map(tag => tag.trim().toLowerCase()) : [];
@@ -97,6 +103,12 @@
     }
 
     function deletePhoto(docId, filename) {
+        if (!currentUser) {
+  status.style.color = "red";
+  status.textContent = "You must be logged in to upload photos.";
+  return;
+}
+
       if (!confirm("Delete this photo?")) return;
 
       const fileRef = storage.ref(`photos/${currentUser.uid}/${filename}`);
