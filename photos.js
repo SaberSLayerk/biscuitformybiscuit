@@ -1,12 +1,14 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
-    authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
-    projectId: "biscuit-for-my-biscuit",
-    storageBucket: "biscuit-for-my-biscuit.appspot.com",
-    messagingSenderId: "1059060992203",
-    appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
-    measurementId: "G-NMFLB5HE3K"
-  };
+
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
+        authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
+        projectId: "biscuit-for-my-biscuit",
+        storageBucket: "biscuit-for-my-biscuit.appspot.com", // ✅ fixed
+        messagingSenderId: "1059060992203",
+        appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
+        measurementId: "G-NMFLB5HE3K"
+    };
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
@@ -25,57 +27,46 @@ const firebaseConfig = {
     });
 
     function logout() {
-      auth.signOut().then(() => {
-        window.location.href = "login.html";
-      });
+      auth.signOut().then(() => window.location.href = "login.html");
     }
 
     function uploadPhoto() {
-  const file = document.getElementById("photoInput").files[0];
-  const tagString = document.getElementById("tagInput").value.trim();
-  const tags = tagString ? tagString.split(',').map(tag => tag.trim().toLowerCase()) : [];
-  const status = document.getElementById("uploadStatus");
+      const file = document.getElementById("photoInput").files[0];
+      const tagInput = document.getElementById("tagInput").value.trim();
+      const tags = tagInput ? tagInput.split(',').map(tag => tag.trim().toLowerCase()) : [];
+      const status = document.getElementById("uploadStatus");
 
-  if (!file) {
-    status.textContent = "Please select a photo.";
-    return;
-  }
+      if (!file) {
+        status.textContent = "Please select a photo.";
+        return;
+      }
 
-  const user = firebase.auth().currentUser;
+      const safeFileName = encodeURIComponent(file.name);
+      const storageRef = storage.ref(`photos/${currentUser.uid}/${safeFileName}`);
 
-  if (!user) {
-    status.style.color = "red";
-    status.textContent = "You must be logged in to upload photos.";
-    return;
-  }
-  const safeFileName = encodeURIComponent(file.name);
-const storageRef = storage.ref(`photos/${user.uid}/${safeFileName}`);
-
-
-  storageRef.put(file)
-    .then(snapshot => snapshot.ref.getDownloadURL())
-    .then(url => {
-      return db.collection("photos").add({
-        uid: user.uid,
-        url: url,
-        tags: tags,
-        filename: file.name,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      });
-    })
-    .then(() => {
-      status.style.color = "green";
-      status.textContent = "Photo uploaded!";
-      document.getElementById("photoInput").value = "";
-      document.getElementById("tagInput").value = "";
-      loadPhotos();
-    })
-    .catch(error => {
-      status.style.color = "red";
-      status.textContent = "Error: " + error.message;
-    });
-}
-
+      storageRef.put(file)
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+          return db.collection("photos").add({
+            uid: currentUser.uid,
+            url: url,
+            tags: tags,
+            filename: file.name,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        })
+        .then(() => {
+          status.style.color = "green";
+          status.textContent = "Photo uploaded!";
+          document.getElementById("photoInput").value = "";
+          document.getElementById("tagInput").value = "";
+          loadPhotos();
+        })
+        .catch(error => {
+          status.style.color = "red";
+          status.textContent = "Error: " + error.message;
+        });
+    }
 
     function loadPhotos() {
       const gallery = document.getElementById("gallery");
@@ -98,7 +89,7 @@ const storageRef = storage.ref(`photos/${user.uid}/${safeFileName}`);
             div.innerHTML = `
               <img src="${data.url}" alt="Photo">
               <p><strong>Tags:</strong> ${data.tags.join(', ')}</p>
-              <button onclick="deletePhoto('${doc.id}', '${data.filename}')">Delete</button>
+              <button onclick="deletePhoto('${doc.id}', '${encodeURIComponent(data.filename)}')">Delete</button>
             `;
             gallery.appendChild(div);
           });
@@ -109,10 +100,7 @@ const storageRef = storage.ref(`photos/${user.uid}/${safeFileName}`);
       if (!confirm("Delete this photo?")) return;
 
       const fileRef = storage.ref(`photos/${currentUser.uid}/${filename}`);
-
-      // Delete from storage
       fileRef.delete().then(() => {
-        // Then delete metadata from Firestore
         return db.collection("photos").doc(docId).delete();
       }).then(() => {
         loadPhotos();
@@ -122,11 +110,11 @@ const storageRef = storage.ref(`photos/${user.uid}/${safeFileName}`);
     }
 
     function searchPhotos() {
-      const searchTerm = document.getElementById("searchTag").value.trim().toLowerCase();
+      const tag = document.getElementById("searchTag").value.trim().toLowerCase();
       const gallery = document.getElementById("gallery");
       gallery.innerHTML = "";
 
-      if (!searchTerm) {
+      if (!tag) {
         loadPhotos();
         return;
       }
@@ -137,7 +125,7 @@ const storageRef = storage.ref(`photos/${user.uid}/${safeFileName}`);
         .then(snapshot => {
           const results = snapshot.docs.filter(doc => {
             const tags = doc.data().tags || [];
-            return tags.includes(searchTerm);
+            return tags.includes(tag);
           });
 
           if (results.length === 0) {
@@ -152,7 +140,7 @@ const storageRef = storage.ref(`photos/${user.uid}/${safeFileName}`);
             div.innerHTML = `
               <img src="${data.url}" alt="Photo">
               <p><strong>Tags:</strong> ${data.tags.join(', ')}</p>
-              <button onclick="deletePhoto('${doc.id}', '${data.filename}')">Delete</button>
+              <button onclick="deletePhoto('${doc.id}', '${encodeURIComponent(data.filename)}')">Delete</button>
             `;
             gallery.appendChild(div);
           });
