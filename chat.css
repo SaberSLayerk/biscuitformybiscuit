@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+h1{
+    text-shadow: 8px 8px rgb(255, 0, 191);
+    color: rgb(224, 225, 226);
+    text-align: center;
+    letter-spacing: 5px;
+    font-family: 'Lobster', cursive;
+    font-size: 75px;
+
+}
 html, body{
     
     background: linear-gradient(180deg,#f78fb3 25%, #FFB7D5 35%, #f5bec4 100%);
@@ -61,13 +71,15 @@ html, body{
   color: #d6336c;
 }
 
-   input, button {
-      margin: 5px 0;
-    }
-    .photo {
-      margin-bottom: 20px;
-    }
-    .photo img {
-      max-width: 200px;
-      display: block;
-    }
+#messages {
+  height: 300px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+#messageInput {
+  width: 70%;
+ 
+
+}
