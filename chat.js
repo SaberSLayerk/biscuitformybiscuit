@@ -1,13 +1,14 @@
 
 // 🔥 Replace with your Firebase config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_APP.firebaseapp.com",
-  projectId: "YOUR_APP",
-  storageBucket: "YOUR_APP.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID"
-};
+        apiKey: "AIzaSyAW0zxO4opk2VRlV4Rn2uW5r540ydSDtD4",
+        authDomain: "biscuit-for-my-biscuit.firebaseapp.com",
+        projectId: "biscuit-for-my-biscuit",
+        storageBucket: "biscuit-for-my-biscuit.appspot.com", // ✅ fixed
+        messagingSenderId: "1059060992203",
+        appId: "1:1059060992203:web:14f3ffe6e984b51b57734e",
+        measurementId: "G-NMFLB5HE3K"
+    };
 
 firebase.initializeApp(firebaseConfig);
 
@@ -45,17 +46,7 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  auth.signInWithEmailAndPassword(email, password).catch(console.error);
-}
 
-function signup() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  auth.createUserWithEmailAndPassword(email, password).catch(console.error);
-}
 
 function logout() {
   if (currentUser) {
